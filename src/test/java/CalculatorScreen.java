@@ -15,8 +15,8 @@ public class CalculatorScreen extends Setup {
     @FindBy(id = "com.google.android.calculator:id/digit_1")
    public WebElement btn1;
 
-    @FindBy(id = "com.google.android.calculator:id/digit_2")
-    public WebElement btn2;
+//    @FindBy(id = "com.google.android.calculator:id/digit_2")
+//    public WebElement btn2;
 
     @FindBy(id = "com.google.android.calculator:id/digit_5")
     public WebElement btn5;
@@ -39,7 +39,7 @@ public WebElement btn6;
     @FindBy(id = "com.google.android.calculator:id/eq")
     public WebElement btnEquals;
 
-    @FindBy(id = "com.google.android.calculator:id/formula")
+    @FindBy(id = "com.google.android.calculator:id/result_final")
     public WebElement textResult;
 
     public final Map<Character, WebElement> digitElements = new HashMap<>();
@@ -51,7 +51,7 @@ public WebElement btn6;
 
         digitElements.put('0', btn0);
         digitElements.put('1', btn1);
-        digitElements.put('2', btn2);
+//        digitElements.put('2', btn2);
         digitElements.put('5', btn5);
         digitElements.put('6', btn6);
 
@@ -61,7 +61,7 @@ public WebElement btn6;
         operatorElements.put('/', btnDivide);
     }
 
-    public void performCalculation(String expression) {
+    public void performCalculation(String expression) throws InterruptedException {
         for (char c : expression.toCharArray()) {
             if (Character.isDigit(c) && digitElements.containsKey(c)) {
                 digitElements.get(c).click();
@@ -70,6 +70,7 @@ public WebElement btn6;
             }
         }
         btnEquals.click();
+        Thread.sleep(9000);
     }
     public String getResult() {
 

@@ -6,7 +6,7 @@ public class CalculatorTest extends Setup {
     public CalculatorScreen calculatorScreen;
 
     @Test
-    public void doSeries() {
+    public void doSeries() throws InterruptedException {
         calculatorScreen = new CalculatorScreen(driver);
         calculatorScreen.performCalculation("100/10*5-10+60");
         String result = calculatorScreen.getResult();
